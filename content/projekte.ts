@@ -1,23 +1,10 @@
-import type { StaticImageData } from "next/image";
-import basedashAkten from "@/public/projekte/basedash-akten.jpg";
-import ciprefundstellen from "@/public/projekte/cipre-fundstellen.jpg";
-import fortis from "@/public/projekte/fortis.jpg";
-
 /*
- * Die Bilanz. Quellen: READMEs und Fahrpläne der Repositories,
- * Commit-Zahlen über die GitHub-API (Standardzweig, Stand der Ausgabe).
- * Bildschirmfotos: BaseDash und Fortis lokal aus dem aktuellen Code aufgenommen,
- * Ciprè aus dem Projektordner (April 2026).
+ * Die Bilanz, nur für das Archiv der Redaktion. Quellen: READMEs und Fahrpläne
+ * der Repositories, Commit-Zahlen über die GitHub-API (Standardzweig, Stand der
+ * Ausgabe).
  */
 
-type Aufnahme = {
-  src: StaticImageData;
-  alt: string;
-  unterschrift: string;
-};
-
 type Projekt = {
-  slug: string;
   dachzeile: string;
   titel: string;
   vorspann: string;
@@ -26,14 +13,10 @@ type Projekt = {
   technik: string[];
   commits: number;
   zeitraum: string;
-  aufnahmen: Aufnahme[];
-  /** AHT hat kein Bildschirmfoto, sondern eine gekennzeichnete Rekonstruktion. */
-  rekonstruktion?: boolean;
 };
 
 export const projekte: Projekt[] = [
   {
-    slug: "cipre",
     dachzeile: "Hauptprojekt · KI für Kanzleien",
     titel: "Ciprè",
     vorspann:
@@ -64,23 +47,8 @@ export const projekte: Projekt[] = [
     ],
     commits: 286,
     zeitraum: "März bis Oktober 2026",
-    aufnahmen: [
-      {
-        src: ciprefundstellen,
-        alt: "Ciprè beantwortet eine Frage zur Haftung von GmbH-Geschäftsführern, rechts eine Liste der Fundstellen mit Relevanzwerten",
-        unterschrift:
-          "Ciprè im April 2026, damals unter dem Arbeitstitel Clio: Antwort mit Fundstellen und Relevanz.",
-      },
-      {
-        src: basedashAkten,
-        alt: "BaseDash: Aktenübersicht einer Kanzlei mit Fristen, Rechtsgebieten und Zuständigkeiten",
-        unterschrift:
-          "BaseDash im Oktober 2026: die Aktenübersicht, mit erfundenen Beispieldaten.",
-      },
-    ],
   },
   {
-    slug: "fortis",
     dachzeile: "Auftrag · Website",
     titel: "Fortis Medical Consulting",
     vorspann:
@@ -100,17 +68,8 @@ export const projekte: Projekt[] = [
     technik: ["Next.js 16", "CSS Modules", "Vercel"],
     commits: 83,
     zeitraum: "September 2026",
-    aufnahmen: [
-      {
-        src: fortis,
-        alt: "Startseite von Fortis Medical Consulting mit der Überschrift „An Ihrer Seite bei den Entscheidungen, die Ihr wirtschaftliches Ergebnis bestimmen“",
-        unterschrift:
-          "Die Startseite, lokal aus dem aktuellen Stand aufgenommen.",
-      },
-    ],
   },
   {
-    slug: "aht",
     dachzeile: "Der Anfang · iPhone-App",
     titel: "Another Habit Tracker",
     vorspann:
@@ -129,8 +88,6 @@ export const projekte: Projekt[] = [
     technik: ["SwiftUI", "Supabase Edge Functions", "OpenAI-API"],
     commits: 3,
     zeitraum: "Januar bis Februar 2026",
-    aufnahmen: [],
-    rekonstruktion: true,
   },
 ];
 

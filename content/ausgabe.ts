@@ -1,8 +1,6 @@
 import type { StaticImageData } from "next/image";
 import { textstellenLink } from "@/lib/quellen";
 import rechtsbild from "@/public/bilder/cipre-hero.jpg";
-import collage from "@/public/bilder/der-kandidat-projekt.jpg";
-import feuilleton from "@/public/bilder/feuilleton.jpg";
 import interviewBild from "@/public/bilder/interview-hero.png";
 import leitartikelBild from "@/public/bilder/leitartikel-hero1.png";
 
@@ -15,7 +13,6 @@ import leitartikelBild from "@/public/bilder/leitartikel-hero1.png";
 export const ausgabe = {
   titel: "Der Kandidat",
   untertitel: "Sonderausgabe für Axel Springer",
-  datumLang: "Samstag, 17. Oktober 2026",
   datumKurz: "17. Okt. 2026",
   nummer: "Ausgabe Nr. 1",
   autor: "Matheo Sieben",
@@ -47,16 +44,6 @@ export const bilder = {
   interview: {
     src: interviewBild,
     alt: "Eine Interviewerin sitzt einer aufgeschlagenen Zeitung an einem Cafétisch gegenüber",
-    credit: `Illustration, ${kiBild}`,
-  },
-  collage: {
-    src: collage,
-    alt: "Montage aus Titelseiten von WELT, POLITICO und Business Insider, Porträts aus der KI-Branche und dem Axel-Springer-Neubau",
-    credit: `Montage, ${kiBild} · Schlagzeilen erfunden`,
-  },
-  feuilleton: {
-    src: feuilleton,
-    alt: "Antike Marmorbüste vor einem farbigen Feld aus Binärziffern",
     credit: `Illustration, ${kiBild}`,
   },
   recht: {

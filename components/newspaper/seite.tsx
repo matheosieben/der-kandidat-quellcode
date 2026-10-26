@@ -114,12 +114,3 @@ export function Randkasten({
     </section>
   );
 }
-
-/** Fließtext der Randspalte. */
-export function Randtext({ children }: { children: ReactNode }) {
-  return (
-    <p className="font-body text-[1.05rem] leading-relaxed text-ink-2">
-      {children}
-    </p>
-  );
-}

@@ -2,7 +2,7 @@
 
 /*
  * Designsystem „Der Kandidat“
- * Abgeleitet aus NYT- und WSJ-Screenshots (siehe PLAN.md, Abschnitt 3).
+ * Abgeleitet aus Screenshots von NYT und WSJ.
  * Alle Farben sind Tokens. Das Blatt erscheint nur hell.
  */
 :root {
@@ -211,7 +211,7 @@ body {
 /* ---------- Artikeltext ---------- */
 
 /* Fließtext der Ausgabe, auch für Vorspann und Einleitungen: auf allen
-   Seiten gleich groß und gleich grau. Die Randspalte setzt kleiner (Randtext). */
+   Seiten gleich groß und gleich grau. Die Randspalte setzt kleiner. */
 .fliesstext {
   font-family: var(--font-body);
   font-size: 1.125rem;
