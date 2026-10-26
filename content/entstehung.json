@@ -1,0 +1,13 @@
+{
+  "von": "2026-10-17",
+  "bis": "2026-10-26",
+  "kalendertage": 10,
+  "arbeitsstunden": 28,
+  "eingabeTokens": 851178190,
+  "eingabeAusCache": 837812511,
+  "ausgabeTokens": 2731677,
+  "sitzungen": {
+    "claude": 41,
+    "codex": 38
+  }
+}

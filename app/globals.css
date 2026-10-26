@@ -1,0 +1,521 @@
+@import "tailwindcss";
+
+/*
+ * Designsystem „Der Kandidat“
+ * Abgeleitet aus NYT- und WSJ-Screenshots (siehe PLAN.md, Abschnitt 3).
+ * Alle Farben sind Tokens. Das Blatt erscheint nur hell.
+ */
+:root {
+  color-scheme: light;
+  --paper: #ffffff;
+  --paper-2: #f7f7f5;
+  --ink: #121212;
+  --ink-2: #363636;
+  --muted: #5a5a5a;
+  --meta: #727272;
+  --rule: #dfdfdf;
+  --rule-strong: #121212;
+  --link: #326891;
+  /* Kontakt-Button im Rosa des Textmarkers, daher dunkle Schrift */
+  --cta: #f5d6ff;
+  --cta-hover: #edb9fc;
+  --cta-active: #e5a2fa;
+  --cta-ink: #121212;
+  --live: #d0021b;
+  --up: #1a7f37;
+  --opinion: #7d5a2c;
+  --chart: #d2715e;
+  --claude: #d97757;
+  --claude-tint: #fbefea;
+  --codex: #4a5cf7;
+  --codex-tint: #eef0ff;
+  --cursor: #4a4a4a;
+  --cooking: #d4532b;
+  --ai: #2340a8;
+  --ai-tint: #eef1fb;
+  --wort-richtig: #6aaa64;
+  --wort-enthalten: #c9b458;
+  --wort-falsch: #787c7e;
+  /* Textmarker, dasselbe Rosa wie „Tippen“ in der Eingabe-Grafik */
+  --marker: #f5d6ff;
+}
+
+@theme inline {
+  --color-marker: var(--marker);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-meta: var(--meta);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-link: var(--link);
+  --color-cta: var(--cta);
+  --color-cta-ink: var(--cta-ink);
+  --color-live: var(--live);
+  --color-up: var(--up);
+  --color-opinion: var(--opinion);
+  --color-chart: var(--chart);
+  --color-claude: var(--claude);
+  --color-claude-tint: var(--claude-tint);
+  --color-codex: var(--codex);
+  --color-codex-tint: var(--codex-tint);
+  --color-cursor: var(--cursor);
+  --color-cooking: var(--cooking);
+  --color-ai: var(--ai);
+  --color-ai-tint: var(--ai-tint);
+
+  --font-wordmark: var(--font-garamond), Georgia, serif;
+  --font-condensed: var(--font-garamond), Georgia, serif;
+  --font-headline: var(--font-garamond), Georgia, serif;
+  --font-body: var(--font-garamond), Georgia, serif;
+  --font-sans: var(--font-geist), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Nachgebaute macOS-Fenster: auf dem Mac SF Pro und SF Mono, sonst Geist */
+  --font-system:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-geist),
+    "Helvetica Neue", sans-serif;
+  --font-terminal:
+    ui-monospace, "SF Mono", Menlo, var(--font-geist-mono), monospace;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+}
+
+/* Markierter Text sieht aus wie der Textmarker; dunkle Schrift, damit er auch im Terminal lesbar bleibt */
+::selection {
+  background: var(--marker);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ai);
+  outline-offset: 2px;
+}
+
+/* ---------- Kopf ---------- */
+
+/* Wortmarke der ersten Ausgabe: DER ♞ KANDIDAT in Garamond-Versalien,
+   ganz in Schwarz */
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.08em;
+  font-family: var(--font-wordmark);
+  font-weight: 500;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 0.92;
+  letter-spacing: 0.018em;
+  color: var(--ink);
+}
+
+.wordmark-springer {
+  flex: none;
+  width: 0.8em;
+  height: 1em;
+  background: currentColor;
+  mask: url("/bilder/springer.png") center / contain no-repeat;
+}
+
+/* NYT: zwei feine Linien unter der Ressortnavigation */
+.double-rule {
+  border-bottom: 4px double var(--rule-strong);
+}
+
+/* ---------- Typografie ---------- */
+
+/* WSJ: Dachzeile in gesperrten Versalien („BUSINESS • DEALS“),
+   im ganzen Blatt in der Farbe der Meinungsrubrik */
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--opinion);
+}
+
+/* WSJ: fette, eng gesetzte Serif für Aufmacher */
+.hl-condensed {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.04;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+/* NYT: fette Serif-Schlagzeile */
+.hl {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+/* NYT: Artikel-Schlagzeile fett kursiv */
+.hl-feature {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+/* WSJ-Randspalte: Schlagzeilen in Grotesk */
+.hl-sans {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.32;
+  color: var(--ink);
+}
+
+/* NYT: grauer Serif-Teasertext */
+.summary {
+  font-family: var(--font-body);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.credit {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--meta);
+}
+
+/* NYT: beim Überfahren wird die Schlagzeile grau statt unterstrichen */
+.story-link:hover .hl,
+.story-link:hover .hl-condensed,
+.story-link:hover .hl-feature,
+.story-link:hover .hl-sans {
+  color: var(--muted);
+}
+
+/* ---------- Artikeltext ---------- */
+
+/* Fließtext der Ausgabe, auch für Vorspann und Einleitungen: auf allen
+   Seiten gleich groß und gleich grau. Die Randspalte setzt kleiner (Randtext). */
+.fliesstext {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.fliesstext h2 {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 1.7em 0 0.5em;
+}
+
+.dropcap::first-letter {
+  float: left;
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 4.6em;
+  line-height: 0.8;
+  margin: 0.06em 0.08em 0 0;
+}
+
+/* ---------- Bedienelemente ---------- */
+
+@layer base {
+  button:enabled,
+  select:enabled {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  button,
+  select {
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-duration: 140ms;
+  }
+}
+
+/* In der Komponenten-Ebene, damit Utilities wie „hidden xl:inline-flex“ greifen */
+@layer components {
+  .btn-cta,
+  .btn-outline,
+  .section-link {
+    transition:
+      color 140ms ease,
+      background-color 140ms ease,
+      border-color 140ms ease,
+      box-shadow 140ms ease;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 2px;
+    background: var(--cta);
+    color: var(--cta-ink);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.85rem;
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.45rem 0.8rem;
+  }
+
+  .btn-outline[aria-current="page"],
+  .btn-outline[aria-expanded="true"] {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .nav-link-label {
+    position: relative;
+  }
+
+  .nav-link-label::after {
+    position: absolute;
+    right: 0;
+    bottom: 1px;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    content: "";
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-link[aria-current="page"] .nav-link-label::after,
+  .nav-link:focus-visible .nav-link-label::after,
+  .nav-link:active .nav-link-label::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .btn-dark:focus-visible,
+  .btn-terminal:focus-visible {
+    outline-color: #8aa4ff;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-cta:hover {
+      background: var(--cta-hover);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .btn-quiet:enabled:hover,
+    .section-link:hover {
+      background-color: var(--paper-2);
+      color: var(--ink);
+    }
+
+    .nav-link:hover .nav-link-label::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .btn-dark:enabled:hover {
+      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.35);
+    }
+
+    .btn-terminal:enabled:hover {
+      background-color: rgb(255 255 255 / 0.08);
+    }
+  }
+
+  .btn-quiet:enabled:active,
+  .section-link:active {
+    background-color: var(--rule);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px rgb(18 18 18 / 0.15);
+  }
+
+  .btn-cta:active {
+    background: var(--cta-active);
+    box-shadow: inset 0 0 0 1px rgb(18 18 18 / 0.2);
+  }
+
+  .btn-outline:active {
+    border-color: var(--ink-2);
+    background: var(--ink-2);
+    color: var(--paper);
+  }
+
+  .btn-dark:enabled:active,
+  .btn-terminal:enabled:active {
+    box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.3);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-cta,
+    .btn-outline,
+    .nav-link-label::after,
+    .section-link {
+      transition: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button,
+  select {
+    transition: none;
+  }
+}
+
+/* Wichtiges im Fließtext, wie mit dem Textmarker angestrichen. Über einen
+   Zeilenumbruch hinweg bekommt jede Zeile ihren eigenen Strich. */
+mark.marker {
+  background: var(--marker);
+  color: inherit;
+  padding: 0.05em 0.15em;
+  margin: 0 -0.05em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Cursor im Terminal: hart an und aus, wie im echten Terminal */
+@keyframes blinken {
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blinken {
+  animation: blinken 1.1s steps(1) infinite;
+}
+
+/* Hinweis auf den nächsten Schritt im RAG-Terminal: leuchtet sanft auf */
+@keyframes pulsieren {
+  50% {
+    box-shadow: 0 0 0 4px rgba(40, 200, 72, 0.25);
+  }
+}
+
+.hinweis-pulsieren {
+  animation: pulsieren 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blinken,
+  .hinweis-pulsieren {
+    animation: none;
+  }
+}
+
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+@media print {
+  .no-print {
+    /* biome-ignore lint/complexity/noImportantStyles: Bedienelemente verschwinden im Druck in jedem Fall */
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* Menü der schmalen Ansicht: ein Dialog, der von links hereinfährt.
+   dialog.menue schlägt die Browserregel für dialog:modal. */
+dialog.menue {
+  position: fixed;
+  inset: 0 auto 0 0;
+  margin: 0;
+  width: min(22rem, 86vw);
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.menue::backdrop {
+  background: rgb(0 0 0 / 0.35);
+}
+
+.menue[open] {
+  animation: menue-rein 180ms ease-out;
+}
+
+@keyframes menue-rein {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menue[open] {
+    animation: none;
+  }
+}
+
+/* Das Interview-Fenster geht von unten rechts auf */
+.fenster-auf {
+  transform-origin: bottom right;
+  animation: fenster-auf 200ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+@keyframes fenster-auf {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fenster-auf {
+    animation: none;
+  }
+}
+
+html:has(.menue[open]) {
+  overflow: hidden;
+}

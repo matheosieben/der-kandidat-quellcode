@@ -1,0 +1,115 @@
+.interaktions-flaeche {
+  position: relative;
+}
+
+.interaktions-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 14px;
+  height: 15px;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: 2px 2px;
+  transition: opacity 200ms ease;
+}
+
+.interaktions-cursor[data-bereit="true"] {
+  opacity: 1;
+}
+
+/* Im Stand schwebt er leicht, statt starr dazustehen */
+.interaktions-koerper {
+  position: absolute;
+  inset: 0;
+  transform-origin: 2px 2px;
+  animation: interaktions-schweben 4.2s ease-in-out infinite;
+}
+
+.interaktions-cursor[data-faehrt="true"] .interaktions-koerper {
+  animation-play-state: paused;
+}
+
+/* Von links auf Tabs gerichtet: gespiegelt um die Spitze */
+.interaktions-cursor[data-zeigen="links"] .interaktions-koerper {
+  scale: -1 1;
+}
+
+@keyframes interaktions-schweben {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  30% {
+    translate: 0.5px -1.8px;
+    rotate: -4deg;
+  }
+  55% {
+    translate: 0 -0.6px;
+    rotate: 0deg;
+  }
+  80% {
+    translate: -0.5px -1.4px;
+    rotate: 3deg;
+  }
+}
+
+.interaktions-koerper::before {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--marker);
+  filter: blur(5px);
+  opacity: 0.55;
+  content: "";
+}
+
+/* Welle beim Antippen, mittig unter der Pfeilspitze */
+.interaktions-klick {
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--marker);
+  opacity: 0;
+}
+
+.interaktions-zeichen {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-origin: 2px 2px;
+}
+
+.interaktions-marker {
+  padding: 0.15em 0.35em;
+  background: var(--marker);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.interaktions-marker button {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interaktions-cursor {
+    transition: none;
+  }
+
+  .interaktions-koerper {
+    animation: none;
+  }
+}
+
+@media print {
+  .interaktions-cursor {
+    display: none;
+  }
+}
