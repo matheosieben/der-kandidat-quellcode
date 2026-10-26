@@ -2,7 +2,8 @@
 
 Eine Initiativbewerbung als Zeitung: Matheo Sieben will in die KI-Einheit der Axel Springer SE.
 Gestaltet nach New York Times und Wall Street Journal, mit freien Schriften und eigener Wordmark.
-Jede Zahl stammt aus den eigenen Arbeitsprotokollen; Fragen beantwortet eine KI-Redaktion.
+Die Zahlen stammen aus den eigenen Arbeitsprotokollen, Hochrechnungen sind gekennzeichnet;
+Fragen beantwortet eine KI-Redaktion.
 
 Die Ausgabe: [kandidat.matheo-sieben.de](https://kandidat.matheo-sieben.de)
 
@@ -50,10 +51,18 @@ Zeitstempel, Modellnamen, Wortzahlen und Zähler und schreibt Aggregate nach
 | `components/werkstatt/` | Dock, RAG-Terminal, Tipp-Terminal, Hinweis-Cursor |
 | `components/ki/` | Interview, Fit Check, Antworttext mit Fundstellen |
 | `components/spiele/` | Wortwahl, Der Springer |
+| `components/lebenslauf/` | Stationen des Lebenslaufs |
+| `components/vorschau/` | Vorschaubilder beim Teilen von Links |
 | `lib/ki/` | Archiv (Faktenbasis), Prompts, Frequenzbremse, Gesprächszustand |
+| `public/` | Illustrationen, App-Mockup, Werkzeug-Icons, Favicons |
 
 Stack: Next.js 16 (App Router, Cache Components), React 19, Tailwind CSS 4,
 `@anthropic-ai/sdk` mit Claude Sonnet 5.5, Biome.
 
-Alle Bilder der Ausgabe sind KI-generiert mit ChatGPT Image 2. Eine Bewerbung, kein Produkt
-der Axel Springer SE.
+## Hinweise
+
+Alle Illustrationen und das App-Mockup sind KI-generiert mit ChatGPT Image 2. Genannte Marken
+und Logos, auch die Icons der Werkzeuge, gehören ihren Inhabern.
+
+Eine Bewerbung, kein Produkt der Axel Springer SE. Der Code ist zum Lesen veröffentlicht und steht
+unter keiner Lizenz; alle Rechte bleiben vorbehalten.
